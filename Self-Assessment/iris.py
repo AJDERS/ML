@@ -97,18 +97,5 @@ class SelfAssessment:
                 c=colors[index])
         plt.legend(handles=patches)
         plt.savefig('iris.png')
-
-    
-
-if __name__ == '__main__':
-    print('Load the data.')
-    s = SelfAssessment('iris.data')
-    print('Making plot, see `iris.png`')
-    s.make_plot()
-    print('Calculating average sepal length within groups.')
-    print(s.calculate_group_average('sepal_length'))
-    print('Calculating variance of sepal lengths within groups.')
-    print(s.calculate_group_variance('sepal_length'))
-    print('Calculating average and variance of distances from first data point to rest.')
-    print(s.calculate_lengths())
+        plt.show()
 
