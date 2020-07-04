@@ -1,0 +1,164 @@
+\documentclass{article}
+
+% As we are working with math euqtions
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+
+% Informations about the document. Observe that those are outside the document environment.
+\author{Chloé Rouyer}
+\title{\LARGE{\LaTeX{} Workshop}\\
+	\large{Exercises and examples about typesetting mathematics, figures, tables and code listings}
+}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	
+	\tableofcontents
+	
+	\newpage
+	
+	\section{Labels in the math environment}
+	
+	If you write an equation inside a line of the text, like here: \( 1 + 1 = 2\), you cannot number it, neither make a reference. However, you can either write equations on their own line that are numbered like
+	
+	\begin{equation} x = 1 \label{eq:1}\end{equation}
+	
+	or that are not:
+	
+	\[ y = 2. \]
+	
+	
+	Once you have added a label, you can refer to an equation like \eqref{eq:1}.
+	% What happens if you use \ref{eq:1} instead of \eqref{eq:1}?
+	
+	When you write equations in multiple lines, you might not want all lines to be numbered. A good practice would be to only have the important lines to be numbered, and to add a label on those.
+	
+	As an example, you could look at the syntax: 
+	\begin{align}
+		 & z = 3  \notag \\
+		 \Rightarrow & z^2 = 9 \label{eq:z2}
+	\end{align}
+	
+	Observe that it is better to use the \texttt{align} environment  (above) rather than two different successive environments (below):
+	
+	\[z = 3\]
+	\begin{equation}
+		\Rightarrow z^2 = 9
+	\end{equation}
+	
+	Can you observe the difference between the two?
+	
+	
+	One of the advantages of the \texttt{align} environment is that you can decide which parts of the equations have to be aligned and where to break lines. 
+	
+	Transform the equations below for them to be correctly displayed and aligned in several lines. Then correct the tags and labels in order to display a tag on the very last line od the equation only, and add a label to that line. Finally, write a sentence where you make a reference to that label.
+	
+	\begin{align}
+		\frac{1}{2}\sqrt{\frac{64}{8}}  = 	\frac{1}{2}\sqrt{8} = 	\sqrt{\frac{1}{4}8} = \sqrt{2}
+	\end{align}
+	
+	
+	
+	
+	
+	\section{Some syntax and common symbols}
+	
+	Dedicated \LaTeX{} editors usually provide tools to help you identify how to write your formulas. Otherwise you can find a list of most symbols, sorted by categories.
+	\url{https://www.rpi.edu/dept/arc/training/latex/LaTeX_symbols.pdf}
+	
+	Most commands take one or several arguments, like \(\sqrt{2x} \) or \(\frac{1}{3}\). 
+	Observe the syntax of a sum:
+	
+	\[ \sum_{i = 0}^\infty \frac{1}{2^i} = 2
+	\]
+	to see how subscripts and superscripts are written. The syntax with be the same for integrals or products.
+	
+	
+	To write good looking equations, it is important that the brackets and parenthesis you are using are correctly scaled. Observe the difference between:
+	
+	\begin{align}
+		& (\frac{1}{2}) \\
+		\text{and } 
+		&\left(\frac{1}{2}\right)
+	\end{align}
+	
+	The same can be applied to different types of brackets. How do you deal with brackets that are escapable characters?
+	
+	How can you display a bracket only on once side of the equation?
+	
+	
+	\section{Variables}
+	
+	To write expected values and probabilities, you need to use \texttt{ \(\backslash \)mathbb} like in  
+	\( \mathbb{E} \). To sets, you can use the same construction with \texttt{ \(\backslash \)mathcal}.
+
+	During that course, the syntaxes $\hat p$	and $\tilde x$ can be useful. Observe what happens when you add an index or an exponent to that variable. Is the hat or the tilde also covering the index and the exponent? What would you do if you wanted that?
+	
+	You will also need many greek letters. 
+	Observe the difference between \(\epsilon \) and \( \varepsilon \), and \( \delta \) and \(\Delta \).
+	
+	\section{Cases and matrices}
+	
+	The easiest syntax to write cases would be:
+	\[ f(x)  = \begin{cases}
+			1  &\text{if } x > 0 \\
+			0 &\text{otherwise}
+	\end{cases}
+	\]
+	However, it is also possible to write it using a matrix and the correct large brackets:
+	
+	\[
+	 f(x)  = 
+	 \left\lbrace
+	\begin{matrix}
+			1  &\text{if } x > 0 \\
+		0 &\text{otherwise}
+	\end{matrix}
+		\right.
+	\]
+	
+	Observe the difference the two methods.
+	
+	Write a matrix like presented in the slides, and another one that uses the \texttt{matrix} environment. Can you observe the difference between the two?
+	
+	
+	\section{Figures}
+	
+	Use the code provided in the slides to include one of your own figures. Play with the scale and the trim parameters if you need. Observe where the image is displayed: is its position the same in the source code and in the pdf? You can fix the position by using the package \texttt{float} and the command \texttt{[H]} as an optional parameter of the \texttt{figure environment}. Apply it and observe the difference.
+
+	\section{Tables}
+	
+	Using the example \autoref*{tab:widgets}, try to add more lines to the table. Is it easy to do? What about the number of columns. Can you make the text of each column centred instead of being aligned to the left and to the right? Can you modify the table for black lines to appear around the table instead of in the middle?
+	
+	
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{l|r}
+			Item & Quantity \\\hline
+			Widgets & 42 
+			
+		\end{tabular}
+		\caption{\label{tab:widgets}An example table.}
+	\end{table}
+
+
+	\section{Include code}
+	
+	Using the code provided below, or another method if you rather like, include a few lines of the code of your choice. Then, also include the code of an entire file (by loading it, no copy-pasting of the entire file). Be aware that in this course, we most of the time will only ask for short sections of code to be included in the report.
+	
+%	\begin{lstlisting}
+%		put your code here 
+%	\end{lstlisting}
+	
+%	\lstinputlisting{source_filename.py}
+
+ \end{document}
+
+
+

@@ -1,0 +1,41 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage{amsmath}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\author{Chloé Rouyer}
+\title{\LARGE{\LaTeX{} Workshop}\\
+	\large{How to label a single line in an \texttt{align} or \texttt{align$^*$} environment?}
+}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+
+	To number a single line in an \texttt{align} environment, there seem to be two options: either your environment numbers all lines by default and you have to specify which lines not to number, either you want to specify which lines to number in an environment that doesn't label by default. The first method can be easily used with the \texttt{align} environment and the \texttt{$\backslash$notag} command, like in this example
+	
+
+	\begin{align}
+	\frac{1}{2}\sqrt{\frac{64}{8}}  
+	& = 	\frac{1}{2}\sqrt{8}   \notag\\
+	& = 	\sqrt{\frac{1}{4}8} \notag\\
+	&  = \sqrt{2} \label{eq:align}
+	\end{align}
+	
+	and the second method, that can be more compact if you only want to number very few lines in the environment, can be achieved with the environment \texttt{align$^*$} and the custom command \texttt{$\backslash$numberthis}:
+
+	\begin{align*}
+	\frac{1}{2}\sqrt{\frac{64}{8}}  
+	& = 	\frac{1}{2}\sqrt{8}  \\
+	& = 	\sqrt{\frac{1}{4}8} \\
+	&  = \sqrt{2}. \label{eq:align_star} \numberthis
+	\end{align*}
+	
+	\textit{For this custom command to work, you need to use the \texttt{amsmath} package, which is needed for the align environment anyway.}
+	
+	Both methods are rendered similarly. 
+	If you observe the way the command \texttt{$\backslash$numberthis} is defined: first, \texttt{$\backslash$addtocounter} takes two arguments, which are the type of counter that we want to increase (here the equation counter) and the second argument expresses the amount we want to add to the counter. The value of that counter is stored in \texttt{$\backslash$theequation}. That counter is shared with the other environments that number equations (\texttt{align}, \texttt{equation}). Finally, that command generates a tag, using as a parameter for tag the value of the counter that we just increased.
+\end{document}

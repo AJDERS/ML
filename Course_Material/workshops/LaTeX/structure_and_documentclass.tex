@@ -1,0 +1,83 @@
+\documentclass{article}
+% Try to change article into another type (like report, scrbook, memoir)
+% How does this influence the table of contents?
+% (remember that you miht have to compile twice for the table of contents to be updated)
+
+\usepackage{hyperref}
+
+% Informations about the document. Observe that those are outside the document environment.
+% Try to remove the \maketitle line. What happens?
+% What about the \tableofcontents line?
+\author{Chloé Rouyer}
+\title{\LARGE{\LaTeX{} Workshop}\\
+	\large{Document structure}
+}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	
+	\tableofcontents
+	
+	\newpage
+	
+	% Try to uncomment the following line to add a chapter. Does this work in the article documentclass?
+	% What about when you change article into report?
+%	\chapter{My first chapter}
+
+	
+	\section{First section}
+	\label{sec:introduction}
+		Welcome to your first \LaTeX{} document. Look at each comment in the source file to observe how the document is rendered when you apply them. One of them will lead to a compilation error, can you identify which one?
+		That document presents most of the commands you should need to structure your reports.
+		\subsection{First subsection of the first section}
+			
+			% Observe how those sentences are written here in the source document and how they are rendered in the pdf. Do you have an idea on how to enforce a distance between the words (if you wanted one?)
+			% Do you know how to display those sentences on two different lines? and in two different paragraphs?
+			% What is the difference between the two?
+			My first sentence.
+			My   second   sentence.
+			
+		\subsection{Second subsection of the first section}
+		
+		To make lists:
+		\begin{enumerate}
+			\item First reason
+			\item Second reason
+		\end{enumerate}
+		and display bullet points:
+		
+		\begin{itemize}
+			\item Some reason
+			\item Some other reason
+		\end{itemize}
+	
+	\section[Second section]{Second section}
+		\subsection{First subsection of the second section}
+		\subsubsection{Some subsubsection}
+		
+		The text appears underneath the subsubsection title\dots
+		\paragraph{Some paragraph} \dots but next to a paragraph name.
+		
+		
+		
+	\section*{Section that is not referenced}
+	% This section exists in the document, but is not referenced in the table of content.
+	% What can you change to make this section referenced again?
+	
+	You might have seen in the source code that we have added a label in section	\ref{sec:introduction}. Now create a new section before section \ref{sec:introduction}, such that the First section is not the first any more. What happened to that reference? 
+	
+	% Now include the package hyperref (uncomment the corresponding line in the introduction). What changed in the document? Now try to use \autoref{sec:introduction} to make your reference? How is it any different from \ref{sec:introduction}?
+	
+	% \autoref{sec:introduction}
+
+	
+	
+	
+\end{document}
+
+
+
+% Try to write something (some plain text) in the document?
+% What happends when you write before \begin{document}?
+% And what happends when you write after \end{document}?

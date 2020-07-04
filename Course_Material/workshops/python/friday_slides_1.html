@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Python & ML - Python Introduction</title>
+    
+    <meta name="description" content="Slides for the Python & ML course">
+    <meta name="author" content="Wouter Boomsma">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="stylesheet" href="../reveal.js-3.7.0/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js-3.7.0/css/theme/white-helv.css" id="theme">
+    
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../reveal.js-3.7.0/lib/css/googlecode.css">
+    
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js-3.7.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <style>
+      .reveal .slides {
+        text-align: left;
+      }
+      .reveal a {
+        color:DarkSlateBlue;
+      }
+      .reveal dt {
+        margin-top:0.5em;
+      }
+      .reveal section img {
+        border: 1px solid lightgrey;
+        box-shadow: none;
+      }      
+      .reveal a img {
+        border: 1px solid lightgrey;
+        box-shadow: none;
+      }      
+      .reveal img.noborder {
+        border: none;
+        box-shadow: none;
+      }
+      .reveal img.center {
+        margin: 0 auto;
+        display:block;
+      }
+      .reveal pre {
+        width: 97.5%;
+        margin-top:10px;
+        margin-bottom:10px;
+      }
+      .reveal pre.nomargin  {
+        margin-top:0px;
+        margin-bottom:0px;
+      }
+      .reveal code .label {
+        background:#E8E8E8;
+        color:grey;
+        padding:4px;
+        height:1em;
+        position:absolute;
+        right:0px;
+        top:0px;
+      }
+      .reveal .twocols50 {
+        width:47%;
+        float:left;
+        margin:1.5%;
+      }
+      .reveal .twocols30 {
+        width:27%;
+        float:left;
+        margin:1.5%;
+      }
+      .reveal .twocols70 {
+        width:67%;
+        float:left;
+        margin:1.5%;
+      }
+      .reveal .twocols40 {
+        width:37%;
+        float:left;
+        margin:1.5%;
+      }
+      .reveal .twocols60 {
+        width:57%;
+        float:left;
+        margin:1.5%;
+      }
+      .reveal .twocols80 {
+        width:77%;
+        float:left;
+        margin:1.5%;
+      }
+      .reveal .twocols20 {
+        width:17%;
+        float:left;
+        margin:1.5%;
+      }
+      .reveal .twocols90 {
+        width:84%;
+        float:left;
+        margin:1.5%;
+      }
+      .reveal .twocols10 {
+        width:10%;
+        float:left;
+        margin:1.5%;
+      }
+      .reveal table.noborder th , .reveal table.noborder td, .reveal tr.noborder th, .reveal tr.noborder td {
+        border: 0px;
+      }
+      .reveal .overlay {
+        position:absolute;
+        background:#eee;
+        display:inline;
+        height:auto;
+        top:50%;
+        transform: translateY(-50%);
+        padding: 8px;
+        box-sizing: border-box;
+        text-align:center;
+      }
+      .reveal .button-container {
+        position:absolute;
+        right:-2px;
+        top:5px;
+      }
+      .reveal .button {
+        background:#F8F8F8;
+        font-size:18px;
+        color:grey;
+        padding:4px;
+        top:0px;
+        border: 1px solid #ccc;
+        margin-left:-1px;
+        vertical-align:top;
+        position:relative;
+      }
+      .reveal .button.highlight {
+        background:#E8E8E8;
+      }
+      .reveal blockquote {
+        width:95%;
+      }
+    </style>
+
+
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+
+  </head>
+  
+  <body>
+    
+    <div class="reveal">
+      
+      <div class="slides">
+        
+        <section style="text-align:center">
+          <br/>
+          <h1>Objects and classes<br>numpy and matplotlib</h1>
+          <h3 style="margin-top:2em">Python &amp; Machine Learning <br/> Topdanmark, 2018</h3>
+          <h3 style="margin-top:1em">Wouter Boomsma</h3>
+          <!--<h2>An introduction to Python</h2>-->
+          <!--<div style="position:absolute; left:50%; margin-left:-25%; text-align:left;">-->
+          <!--</div>-->
+        </section>
+
+
+        <section style="text-align:center">
+          <h3>External modules</h3>
+        </section>
+
+
+        <section>
+          <h3>Lots, and lots, and lots of modules...</h3>
+
+          <p>There are Python modules to solve almost any task that you can imagine...
+
+          <ul>
+            <li class="fragment"><code>grmaster</code>: Module for dividing students into groups</li>
+            <li class="fragment"><code>sudokumaker</code>: Create sudoku puzzles</li>
+            <li class="fragment"><code>IMDb</code>: Query the internet movie database</li>
+            <li class="fragment">...</li>
+          </ul>
+
+          <span class="fragment">They can be found in the Python Package Index (<a href="https://pypi.python.org/">PyPI</a>)</span></p>
+
+          <p class="fragment">In addition to many small quirky modules - there are some very well developed packages which are extremely useful for Scientific applications and Machine Learning.</p>
+
+        </section>
+
+        <section>
+          <h3>Python modules for Machine Learning </h3>
+
+          <span style="font-size:75%">
+          <p><b>Numpy</b><br/>vector and matrix operations like in matlab.</p>
+
+          <p><b>Matplotlib</b><br/>Plotting library.</p>
+
+          <p><b>Pandas</b><br/>A Python module for data manipulation similar to what you can do in <code>R</code>.</p>
+
+          <p><b>Scikit-learn</b><br/>A data mining and machine learning toolkit: classification, clustering, regression, etc.</p>
+
+          <p><b>Tensorflow</b><br/>A Machine Learning library - with particular focus on neural networks.</p>
+
+          <p>We'll cover numpy and matplotlib today, pandas and scikit-learn next week, and tensorflow later</p>
+          </span>
+        </section>
+
+        <section style="text-align:center">
+          <h2>Numpy</h2>
+        </section>
+
+        <section>
+          <h3>numpy</h3>
+
+          <p>Basic ideas:</p>
+
+          <ul>
+            <li class="fragment">Make it easy to perform operations on a collection of numbers.</li>
+            <li class="fragment">Make it easy to work with tables (matrices) of numbers</li>
+            <li class="fragment">Much faster than writing loops in Python</li>
+          </ul>
+
+          <p class="fragment">In short: whenever you have a list of numbers, consider using numpy.</p>
+
+        </section>
+
+        <section>
+          <h3>numpy - importing</h3>
+
+          <pre><code class="python" data-trim>import numpy</code></pre>
+
+          <div class="fragment"><p>or:</p>
+            <pre><code class="python" data-trim>import numpy as np</code></pre>
+          </div>
+
+        </section>
+
+        <section>
+          <h3>numpy - array</h3>
+
+          <p>The main ingredient in numpy is a new type: the numpy array.</p>
+
+          <p>Creating an array from a list or tuple:</p>
+          <pre><code class="python" data-trim>a = np.array([1,2,3,4])
+a = np.array((1,2,3,4))</code></pre>
+
+          <div class="fragment">
+            <p>In contrast to lists, numpy arrays are primarily designed to contain elements of the same type.</p>
+
+            <p>You can specify a type explicitly:</p>
+            <pre><code class="python" data-trim>a = np.array([1,2,3,4], np.float)   # np.int, np.bool, ...</code></pre>
+            <p>If not specified, numpy will take a guess.</p>
+          </div>
+        </section>
+
+        <section>
+          <h3>numpy - array initialization</h3>
+
+          <p>There are various other ways to initialize numpy arrays</p>
+
+          <span class="fragment">
+            <div>Range of numbers:</div>
+            <pre class="twocols50"><code class="python" data-trim>print(np.arange(2.0, 2.4, 0.1))</code></pre>
+            <pre class="twocols50"><code class="python" data-trim data-noescape><div class="label">output</div>[ 2. ,  2.1,  2.2,  2.3]</code></pre>
+
+            <!--           <pre><code class="python" data-trim>&gt;&gt;&gt; np.arange(2.0, 2.5, 0.1)      # Note similarity to range() function  -->
+            <!-- array([ 2. ,  2.1,  2.2,  2.3,  2.4])</code></pre> -->
+          </span>
+
+          <span class="fragment">
+            <div>Zeros:</div>
+            <pre class="twocols50"><code class="python" data-trim>print(np.zeros(4))</code></pre>
+            <pre class="twocols50"><code class="python" data-trim data-noescape><div class="label">output</div>[ 0.  0.  0.  0.]</code></pre>
+          </span>
+
+          <span class="fragment">
+            <div>Ones:</div>
+            <pre class="twocols50"><code class="python" data-trim>print(np.ones(4))</code></pre>
+            <pre class="twocols50"><code class="python" data-trim data-noescape><div class="label">output</div>[ 1.  1.  1.  1.]</code></pre>
+            <!--   <pre><code class="python" data-trim>&gt;&gt;&gt; np.ones(5) -->
+            <!-- array([ 1.,  1.,  1.,  1.,  1.])</code></pre> -->
+          </span>
+        </section>
+
+        <section>
+          <h3>numpy - operations on arrays</h3>
+
+          <p>The common mathematical operators are available</p>
+
+          <pre class="twocols40"><code class="python" data-trim data-noescape>
+a = np.arange(1,4)
+
+print(a)
+<span class="fragment" data-fragment-index="1">print(3*a)</span>
+<span class="fragment" data-fragment-index="2">print(a+a)</span>
+<span class="fragment" data-fragment-index="3">print(a*a)</span>
+<span class="fragment" data-fragment-index="4">print(a/a)</span>
+<span class="fragment" data-fragment-index="5">print(np.cos(a))</span>
+          </code></pre>
+          <pre class="twocols60"><code class="python" data-trim data-noescape><div class="label">output</div>
+
+[1 2 3]
+<span class="fragment" data-fragment-index="1">[3 6 9]</span>
+<span class="fragment" data-fragment-index="2">[2 4 6]</span>
+<span class="fragment" data-fragment-index="3">[1 4 9]</span>
+<span class="fragment" data-fragment-index="4">[1. 1. 1.]</span>
+<span class="fragment" data-fragment-index="5">[ 0.54030231 -0.41614684 -0.9899925 ]</span></code></pre>
+          <!--           <pre><code class="python" data-trim data-noescape> -->
+          <!-- &gt;&gt;&gt; a = np.arange(1,4)  -->
+          <!-- <span class="fragment">&gt;&gt;&gt; a -->
+          <!-- array([1, 2, 3])</span> -->
+          <!-- <span class="fragment">&gt;&gt;&gt; 3*a -->
+          <!-- array([3, 6, 9])</span> -->
+          <!-- <span class="fragment">&gt;&gt;&gt; a+a -->
+          <!-- array([2, 4, 6])</span> -->
+          <!-- <span class="fragment">&gt;&gt;&gt; a*a -->
+          <!-- array([1, 4, 9])</span> -->
+          <!-- <span class="fragment">&gt;&gt;&gt; a/a -->
+          <!-- array([1, 1, 1])</span> -->
+          <!-- <span class="fragment">&gt;&gt;&gt; np.cos(a) -->
+          <!-- array([ 0.54030231, -0.41614684, -0.9899925 ])</span></code></pre> -->
+
+          <p class="fragment" data-fragment-index="6">Note how they automatically apply on all elements. </p>
+
+          <p class="fragment" data-fragment-index="7">What would happen if we did the same with normal lists?</p>
+
+        </section>
+
+        <section>
+          <h3>numpy - random arrays</h3>
+
+          <p>You can create arrays with random numbers</p>
+
+          <div class="fragment">
+
+            <div>Random floating point numbers between 0 and 1</div>
+            <pre class="twocols40"><code class="python" data-trim>print(np.random.rand(3))</code></pre>
+            <pre class="twocols60"><code class="python" data-trim data-noescape><div class="label">output</div>
+[ 0.53066947  0.03155089  0.39243265]</code></pre>
+
+          </div>
+
+          <div class="fragment">
+
+            <div>Random integers:</div>
+            <pre class="twocols70"><code class="python" data-trim># 5 numbers between 1 and 3 (3 not included)
+print(np.random.randint(1,3,5))</code></pre>
+            <pre class="twocols30"><code class="python" data-trim data-noescape><div class="label">output</div>
+[2 1 2 2 2]</code></pre>
+
+          </div>
+          <div class="fragment">
+
+            <div>Different distributions:</div>
+            <pre class="twocols50"><code class="python" data-trim># normal distr: mean=0, stddev=1
+print(np.random.standard_normal(2))</code></pre>
+            <pre class="twocols50"><code class="python" data-trim data-noescape><div class="label">output</div>
+[ 1.70067518  0.63932443]</code></pre>
+
+          </div>
+        </section>
+
+        <section>
+          <h3>numpy - Exercise 1</h3>
+
+          <p>The previous slide provides us with a very simple way to simulate throwing 2 dice (like we did earlier).</p>
+
+          <ol>
+            <li>Create a one-line python statement that calculates the average of 10,000 throws of the sum of two dice. <br/>Hint: <code>np.average()</code> calculates the average over an array.
+          </ol>
+        </section>
+
+        <section class="solution">
+          <h3>numpy - Exercise 1 - solution</h3>
+
+          <ol>
+            <li><i>Create a one-line python statement that calculates the average of 10,000 throws of the sum of two dice. <br/>Hint: <code>np.average()</code> calculates the average over an array</i>.
+              <span class="fragment">
+          <pre style="max-width:none;width:100%;"><code style="font-size:90%" class="python" data-trim>print(np.average(np.random.randint(1,7,10000) + np.random.randint(1,7,10000)))</code></pre>
+          <pre style="max-width:none;width:100%;"><code style="font-size:90%" class="python" data-trim data-noescape><div class="label">output</div>7.0411000000000001</code></pre></span>
+          </ol>
+        </section>
+
+
+        <section>
+          <h3>numpy - multidimensional arrays</h3>
+
+          <p>Common scenario: data set with multiple columns</p>
+
+          <p class="fragment" >Numpy is ideal for handling such data - using 2D arrays.</p>
+
+          <div class="fragment">
+
+            <p>Initializing from a list of lists:</p>
+
+            <pre class="twocols60"><code class="python" data-trim>print(np.array([[1,2,3,4],[5,6,7,8]]))
+            </code></pre>
+            <pre class="twocols40"><code class="python" data-trim data-noescape><div class="label">output</div>[[1 2 3 4]
+ [5 6 7 8]]
+            </code></pre>
+
+          </div>
+        </section>
+
+        <section>
+          <h3>numpy - multidimensional arrays: shape</h3>
+
+          <p>In general arrays can be of any dimension. This is encoded in the <i>shape</i> of an array.</p>
+
+          <div class="fragment" data-fragment-index="1">
+
+            <p>The shape tuple specifies how many values there are in each dimension</p>
+
+            <span class="fragment" data-fragment-index="2">
+            <pre class="twocols60"><code class="python" data-trim data-noescape># 3 values in one dimension
+a = np.arange(1,4)
+
+print(a)
+print(a.shape)
+
+<span class="fragment" data-fragment-index="3"># 2 rows and 4 columns
+a = np.array([[1,2,3,4],[5,6,7,8]])
+
+print(a)
+
+print(a.shape)</span></code></pre>
+            <pre class="twocols40"><code class="python" data-trim data-noescape><div class="label">output</div>
+
+
+array([1, 2, 3])
+(3,)
+
+
+
+
+<span class="fragment" data-fragment-index="3">array([[1, 2, 3, 4],
+       [5, 6, 7, 8]])
+(2, 4)
+            </span></code></pre>
+            </span>
+
+            <!--             <pre class="fragment"><code class="python" data-trim data-noescape> -->
+            <!-- &gt;&gt;&gt; a = np.arange(1,4)                      # 3 values in one dimension -->
+            <!-- &gt;&gt;&gt; a -->
+            <!-- array([1, 2, 3]) -->
+            <!-- &gt;&gt;&gt; a.shape -->
+            <!-- (3,) -->
+            <!-- <span class="fragment"> -->
+            <!-- &gt;&gt;&gt; a = np.array([[1,2,3,4],[5,6,7,8]])     # 2 rows and 4 columns -->
+            <!-- &gt;&gt;&gt; a -->
+            <!-- array([[1, 2, 3, 4], -->
+            <!--        [5, 6, 7, 8]]) -->
+            <!-- &gt;&gt;&gt; a.shape -->
+            <!-- (2, 4)</span></code></pre> -->
+          </div>
+
+        </section>
+
+        <section>
+          <h3>numpy - multidimensional arrays: initializing</h3>
+
+          <p>Many of numpys initializer functions take a shape as argument</p>
+
+          <pre class="twocols50"><code style="font-size:90%" class="python" data-trim>print(np.zeros(shape=(2,3)))</code></pre>
+          <pre class="twocols50"><code style="font-size:90%" class="python" data-trim data-noescape><div class="label">output</div>[[ 0.  0.  0.]
+ [ 0.  0.  0.]]</code></pre>
+
+          <pre class="twocols50"><code style="font-size:90%" class="python" data-trim>print(np.random.random((2,3)))</code></pre>
+          <pre class="twocols50"><code style="font-size:90%" class="python" data-trim data-noescape><div class="label">output</div>
+[[ 0.44923652  0.15528157  0.66292896]
+ [ 0.5421247   0.44336697  0.27264862]]</code></pre>
+
+        </section>
+
+        <section>
+          <h3>numpy - arrays: initializing from file</h3>
+
+          <p>Numpy has very convenient functionality for reading in data from file</p>
+
+          <div class="fragment">
+
+            <pre><code class="bash" data-trim data-noescape><div class="label">data.txt</div>1 2 3
+4 5 6
+7 8 9</code></pre>
+
+            <pre class="twocols50"><code class="python" data-trim>a = np.genfromtxt('data.txt')
+print(a)</code></pre>
+            <pre class="twocols50"><code class="python" data-trim data-noescape><div class="label">output</div>
+[[1 2 3]
+ [4 5 6]
+ [7 8 0]]</code></pre>
+
+          </div>
+
+        </section>
+
+        <section>
+          <h3>numpy - array indexing and slicing (1)</h3>
+
+          <p>You can index into a 1D numpy array just as a list</p>
+
+          <pre class="twocols70"><code class="python" data-trim>a = np.arange(1,4)
+print(a[1])</code></pre>
+          <pre class="twocols30"><code class="python" data-trim data-noescape><div class="label">output</div>
+2</code></pre>
+
+          <div class="fragment">
+
+            <div>For multidimensional arrays, you just specify an index for each dimension</div>
+
+            <pre class="twocols70"><code class="python" data-trim>a = np.array([[1,2,3,4],[5,6,7,8]])
+print(a)
+
+print(a[0,2])
+</code></pre>
+            <pre class="twocols30"><code class="python" data-trim data-noescape><div class="label">output</div>
+[[1 2 3 4]
+ [5 6 7 8]]
+3
+</code></pre>
+
+            <p class="fragment">Note the difference to how you would index into a list of lists</p>
+
+          </div>
+
+        </section>
+
+        <section>
+          <h3>numpy - array indexing and slicing (2)</h3>
+
+          <p>As for lists, use <code>:</code> to indicate that you want a range of values in a given dimension</p>
+
+          <pre class="twocols70"><code class="python" data-trim data-noescape>a = np.array([[1,2,3,4],[5,6,7,8],[0,0,0,0]])
+print(a)
+
+
+
+<span class="fragment" data-fragment-index="1">print(a[0,1:3])</span>
+
+<span class="fragment" data-fragment-index="2">print(a[0:2,1])</span>
+          </code></pre>
+          <pre class="twocols30"><code class="python" data-trim data-noescape><div class="label">output</div>
+[[1 2 3 4]
+ [5 6 7 8]
+ [0 0 0 0]]
+
+<span class="fragment" data-fragment-index="1">[2 3]</span>
+
+<span class="fragment" data-fragment-index="2">[2 6]</span>
+          </code></pre>
+
+          <div class="fragment">
+
+            <div>If you want all values in a given dimension, just use <code>:</code> by itself</div>
+
+            <pre class="twocols70"><code class="python" data-trim># Extract second column
+print(a[:,1])          </code></pre>
+            <pre class="twocols30"><code class="python" data-trim data-noescape><div class="label">output</div>
+[2 6 0]</code></pre>
+
+          </div>
+
+        </section>
+
+        <section>
+          <h3>numpy - Exercise 2</h3>
+
+          <p>Remember Assignment 1 where we calculated the average of two columns of numbers?</p>
+
+          <ol>
+            <li>If you don't already have it, get experimental_results.txt: <a style="font-size:75%" href="https://wouterboomsma.github.io/python_ml_2018/data/experimental_results.txt">https://wouterboomsma.github.io/python_ml_2018/data/experimental_results.txt</a>.</li>
+            <li>Read this file into a numpy array called <code>data</code>.</li>
+            <li>Calculate the average of each of the two columns</li>
+            <li>Create a numpy array called <code>data_subset</code>, and set it to contain the first 500 values of the second column of the <code>data</code> array.</li>
+            <li>Set all entries in the <code>data_subset</code> variable to zero.</li>
+            <li>Now calculate the average of each of the two columns in the <code>data</code> array again.</li>
+          </ol>
+
+        </section>
+
+        <section class="solution">
+          <h3>numpy - Exercise 2 - solution</h3>
+
+          <ol>
+            <li>If you don't already have it, get experimental_results.txt: <a style="font-size:75%" href="http://people.binf.ku.dk/wb/lpp2017/week38/experimental_results.txt">http://people.binf.ku.dk/wb/lpp2017/week38/experimental_results.txt</a>.</li>
+            <li>Read this file into a numpy array called <code>data</code>.</li>
+            <pre><code class="python" data-trim>import numpy as np
+data = np.genfromtxt("experimental_results.txt")
+          </code></pre>
+            <li>Calculate the average of each of the two columns</li>
+            <pre class="twocols60"><code class="python" data-trim>print(np.average(data[:,0]),
+      np.average(data[:,1]))</code></pre>
+            <pre class="twocols40"><code class="python" data-trim data-noescape><div class="label">output</div>
+0.495052368 0.498952201</code></pre>
+
+            <div class="fragment">
+              <div>or...</div>
+              <pre class="twocols60"><code class="python" data-trim>print(np.average(data, axis=0))</code></pre>
+              <pre class="twocols40"><code class="python" data-trim data-noescape><div class="label">output</div>
+[ 0.49505237  0.4989522 ]</code></pre>
+
+            </div>
+          </ol>
+        </section>
+
+        <section class="solution">
+          <h3>numpy - Exercise 2 - solution (2)</h3>
+
+          <ol start="4">
+            <li>Create a numpy array called <code>data_subset</code>, and set it to contain the first 500 values of the second column of the <code>data</code> array.</li>
+            <pre><code class="python" data-trim>data_subset = data[:500, 1]</code></pre>
+            <li>Set all entries in the <code>data_subset</code> variable to zero.</li>
+            <pre><code class="python" data-trim>data_subset[:] = 0</code></pre>
+            <li>Now calculate the average of each of the two columns in the <code>data</code> array again.</li>
+            <pre class="twocols50"><code class="python" data-trim>print(np.average(data, axis=0))</code></pre>
+            <pre class="twocols50"><code class="python" data-trim data-noescape><div class="label">output</div>[ 0.49505237  0.25336498]</code></pre>
+            <p class="fragment">What happened here?</p>
+          </ol>
+        </section>
+
+        <section>
+          <h3>numpy - slices are references!</h3>
+
+          <p>When you make a slice of an array, numpy doesn't make a new copy of the data</p>
+
+          <pre class="twocols70"><code class="python" data-trim>a = np.array(((1,2,3), (4,5,6), (7,8,9)))
+b = a[0:2, 0:2]
+b[0,0] = 8
+print(a)</code></pre>
+          <pre class="twocols30"><code class="python" data-trim data-noescape><div class="label">output</div>
+
+
+[[8 2 3]
+ [4 5 6]
+ [7 8 9]]</code></pre>
+
+          <div class="fragment">
+
+            <p>This is important when working with large data sets</p>
+
+            <p>If you want a copy, use np.copy</p>
+
+            <pre><code class="python" data-trim>b = np.copy(a[0:2, 0:2])</code></pre>
+
+          </div>
+
+        </section>
+
+        <section>
+          <h3>A brief aside: references in Python</h3>
+
+          <p>Unlike C and matlab, almost everything in Python happens <emph>by reference</emph>:</p>
+
+          <pre><code class="python" data-trim data-noescape>
+def f(my_list):
+    my_list[0] = 100  # my_list is just a reference to the original value
+
+x = [1,2,3]
+y = x                 # y is just a reference to x
+f(y)                  # after this, x will be [100, 2, 3]
+          </code></pre>
+
+          <p>No copies of your data will be made, unless</p>
+          <ul>
+            <li>You explicitly ask for it (using e.g. <code>np.copy</code> or <code>copy.deepcopy</code>)</li>
+            <li>For numpy: some fancy indexing operations return copies. See <a href="https://scipy-cookbook.readthedocs.io/items/ViewsVsCopies.html">https://scipy-cookbook.readthedocs.io/items/ViewsVsCopies.html</a></li>
+          </ul>
+
+        </section>
+
+          <section>
+          <h3>numpy - conclusions</h3>
+
+          <ul>
+            <li>Numpy has functionality for handling large amounts of data efficiently</li>
+            <li>It handles vectors and matrices in a similar way as Matlab</li>
+            <li>It is one of the success-stories of Python.</li>
+          </ul>
+        </section>
+
+
+
+        <section style="text-align:center">
+          <h2>Matplotlib</h2>
+        </section>
+
+        <section>
+          <h3>matplotlib</h3>
+
+          <p>Very powerful, general purpose plotting functionality</p>
+
+          <p class="fragment">There are thousands of things you can do with it. We'll just show a few examples here...</p>
+
+        </section>
+
+        <section>
+          <h3>matplotlib - importing</h3>
+
+          <p>The standard way to import matplotlib:</p>
+
+          <pre><code class="python" data-trim>import matplotlib.pyplot as plt</code></pre>
+
+          <p>If you are working in a jupyter notebook, you can use <pre><code class="python">%matplotlib inline</code></pre> to show the generated plots as part of the notebook</p>
+
+        </section>
+
+        <section>
+          <h3>matplotlib - simple plot</h3>
+
+          <div style="float:left; width:50%;">
+            <pre><code class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+x = np.arange(0, 10, 0.1)
+y = np.cos(x)
+plt.plot(x,y)
+plt.show()</code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;" src="../images/matplotlib_plot1.png"/>
+          </div>
+
+          <p class="fragment">Try it out!</p>
+        </section>
+
+        <section>
+          <h3>matplotlib - saving to a file</h3>
+
+          <div style="float:left; width:50%;">
+            <pre><code class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+x = np.arange(0, 10, 0.1)
+y = np.cos(x)
+plt.plot(x,y)
+plt.savefig('plot.png',
+            transparent=True)
+            </code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px; box-shadow:none;background:transparent" src="../images/matplotlib_plot_transparent.png"/>
+          </div>
+          <p class="fragment">Note that you can use <code>transparent=True</code> for transparent backgrounds.</p>
+        </section>
+
+        <section>
+          <h3>matplotlib - multiple plots</h3>
+
+          <div style="float:left; width:50%;">
+            <pre><code class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(0, 10, 0.1)
+
+y1 = np.cos(x)
+plt.plot(x,y1)
+
+y2 = np.sin(x)
+plt.plot(x,y2)
+
+plt.show()</code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;background:transparent" src="../images/matplotlib_plot2.png"/>
+          </div>
+
+        </section>
+
+        <section>
+          <h3>matplotlib - legends</h3>
+
+          <div style="float:left; width:50%;">
+            <pre><code class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(0, 10, 0.1)
+
+y1 = np.cos(x)
+plt.plot(x,y1, label='cosine')
+
+y2 = np.sin(x)
+plt.plot(x,y2, label='sine')
+
+plt.legend()
+
+plt.show()</code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;background:transparent" src="../images/matplotlib_plot2_legends.png"/>
+          </div>
+
+          <div style="clear:both;"/>
+
+          <p class="fragment">Note that the <code>legend()</code> automatically reads the labels from the individual plot commands.</p>
+
+        </section>
+
+        <section>
+          <h3>matplotlib - histograms</h3>
+
+          <div style="float:left; width:50%;">
+            <pre><code class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.random.standard_normal(10000)
+plt.hist(x, bins=100)
+
+plt.show()
+            </code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;background:transparent" src="../images/matplotlib_hist.png"/>
+          </div>
+
+        </section>
+
+
+        <section>
+          <h3>matplotlib - scatter plot</h3>
+
+          <div style="float:left; width:50%;">
+            <pre><code class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+
+# 2D-Gauss distribution
+x = np.random.multivariate_normal(
+      mean=(1,2),
+      cov=[[1,-0.5],[-0.5,1]],
+      size=1000)
+plt.scatter(x[:,0],x[:,1])
+
+plt.show()
+            </code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;" src="../images/matplotlib_scatter.png"/>
+          </div>
+
+        </section>
+
+        <section>
+          <h3>matplotlib - box plot</h3>
+
+          <div style="float:left; width:50%;">
+            <pre><code class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+
+# Two different distributions
+data = [np.random.normal(0, 1,
+                         1000),
+        np.random.normal(1, 0.5,
+                         1000)]
+plt.boxplot(data)
+
+plt.show()
+            </code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;" src="../images/matplotlib_boxplot.png"/>
+          </div>
+
+        </section>
+
+        <section>
+          <h3>matplotlib - violin plot</h3>
+
+          <div style="float:left; width:50%;">
+            <pre><code class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+
+# Two different distributions
+data = [np.random.normal(0, 1,
+                         10000),
+        np.random.normal(1, 0.5,
+                         10000)]
+plt.violinplot(data)
+
+plt.show()
+            </code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;" src="../images/matplotlib_violinplot.png"/>
+          </div>
+
+        </section>
+
+
+        <section>
+          <h3>matplotlib - Exercise</h3>
+
+          Remember the die example from before?
+          <pre><code class="python" data-trim>np.average(np.random.randint(1,7,10000) + np.random.randint(1,7,10000))</code></pre>
+
+          <ol>
+            <li>Instead of taking the average, use the <code>plt.hist</code> function to plot the distribution of outcomes from the sum of two dice. That is: plot the frequency of observing all the different outcomes.</li>
+            <li>Does the result look like what you would expect?</li>
+          </ol>
+        </section>
+
+        <section class="solution">
+          <h3>matplotlib - Exercise - solution</h3>
+
+          <div style="float:left; width:75%;">
+            <pre><code class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+
+dist = (np.random.randint(1,7,10000) +
+        np.random.randint(1,7,10000))
+plt.hist(dist)
+
+plt.show()
+            </code></pre>
+          </div>
+          <div style="float:left; width:25%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;" src="../images/matplotlib_dice_hist.png"/>
+          </div>
+
+          <div style="clear:both"></div>
+
+          <div style="float:left; width:75%;">
+            <p>Is this what we expect? <span class="fragment" data-fragment-index="1">No.</span></p>
+
+            <p class="fragment" data-fragment-index="1">Adjust the bin vector to get the right result</p>
+
+            <pre class="fragment" data-fragment-index="1"><code class="python" data-trim>plt.hist(dist, bins=np.arange(1.5, 13.5, 1))</code></pre>
+          </div>
+          <div class="fragment" data-fragment-index="1" style="float:left; width:25%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;" src="../images/matplotlib_dice_hist_bins.png"/>
+          </div>
+
+        </section>
+
+        <section>
+          <h3>matplotlib - Opacity</h3>
+
+          <p>Many of matplotlib functions support an <span class="tt">alpha</span> parameter, which sets the opacity</p>
+
+          <div style="float:left; width:50%;">
+
+            <pre style="width:100%"><code style="font-size:90%" class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+
+# Create distribution of points
+dist = np.random.random((50,2))
+
+# What does this line do?
+sizes = np.random.randint(10, 1000,
+                          dist.shape[0])
+
+# Create scatter plot
+plt.scatter(dist[:,0],dist[:,1],
+            s=sizes,
+            alpha=0.5) # set opacity
+
+            </code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;" src="../images/matplotlib_opacity.png"/>
+          </div>
+
+        </section>
+
+        <section>
+          <h3>matplotlib - subplots</h3>
+
+          <div style="float:left; width:50%;">
+
+          <pre style="width:100%"><code style="font-size:90%" class="python" data-trim>import matplotlib.pyplot as plt
+import numpy as np
+
+# Linearly spaced x values
+x = np.linspace(0.0, 5.0, num=100)
+
+# y: one cos and dampled cos
+y1 = np.cos(2 * np.pi * x)
+y2 = np.cos(2 * np.pi * x) * np.exp(-x)
+
+# Choose subplot and create plot
+plt.subplot(2, 1, 1)  # nrows, ncols, idx
+plt.plot(x, y1, '.-')
+
+plt.subplot(2, 1, 2)  # nrows, ncols, idx
+plt.plot(x, y2, '.-')
+
+plt.show()
+            </code></pre>
+          </div>
+          <div style="float:left; width:50%;">
+            <img style="display:block;margin-left:auto; margin-right:auto;border:0px;" src="../images/matplotlib_subplots.png"/>
+          </div>
+
+        </section>
+
+        <section>
+          <h2>matplotlib - more info</h2>
+
+          <p>It can be difficult to find the right documentation for matplotlib. Here are a few places to look.</p>
+
+          <ul>
+          <li><a href="http://www.matplotlib.org">http://www.matplotlib.org</a>: Official website - with search box.</li>
+
+          <li><a href="https://matplotlib.org/tutorials/introductory/sample_plots.html">https://matplotlib.org/tutorials/introductory/sample_plots.html</a>: sample plots. Code provided.</li>
+
+          <li><a href="https://matplotlib.org/gallery.html">https://matplotlib.org/gallery.html</a>: Plot gallery. Code provided.</li>
+          </ul>
+        </section>
+        <!--<section>-->
+          <!--<h3>matplotlib - finding documentation</h3>-->
+
+          <!--<p>It can be difficult to find the right documentation for matplotlib. Here are a few places to look.</p>-->
+
+          <!--<a href="http://www.matplotlib.org">http://www.matplotlib.org</a>: Official website - with search box.-->
+          <!--<a href="https://matplotlib.org/tutorials/introductory/sample_plots.html">https://matplotlib.org/tutorials/introductory/sample_plots.html</a>: sample plots. Code provided - and individual functions link to documentation-->
+
+        <!--</section>-->
+
+
+
+      </div>
+    </div>
+
+
+    <script src="../reveal.js-3.7.0/lib/js/head.min.js"></script>
+    <script src="../reveal.js-3.7.0/js/reveal.js"></script>
+
+    <script>
+
+      var hideSolutions = false;
+
+      if (hideSolutions && (new Date() < new Date("2018-09-20 12:00"))) {
+         var solution_sections = document.getElementsByClassName("solution");
+         for (var i = solution_sections.length-1; i >= 0 ; i--) {
+            var element = solution_sections[i];
+            element.parentNode.removeChild(element);
+         }
+      }
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      transitionSpeed: 'fast',
+      touch: true,
+      keyboard: true,
+      slideNumber: true,
+
+      minScale:0.1,
+      maxScale:5.0,
+
+      transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: '../reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js-3.7.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js-3.7.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js-3.7.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: '../reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js-3.7.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js-3.7.0/plugin/math/math.js', async: true }
+      ]
+      });
+
+    </script>
+
+  </body>
+</html>
