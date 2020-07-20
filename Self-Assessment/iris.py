@@ -90,12 +90,15 @@ class SelfAssessment:
                 color=colors[idx],
                 label=f'{class_}')
             patches.append(patch)
+        _, ax = plt.subplots()
         for index in range(len(sepal_length_list)):
-            plt.scatter(
+            ax.scatter(
                 sepal_length_list[index],
                 sepal_width_list[index],
                 c=colors[index])
-        plt.legend(handles=patches)
+        ax.set_xlabel('length')
+        ax.set_ylabel('width')
+        ax.legend(handles=patches)
         plt.savefig('iris.png')
         plt.show()
 
